@@ -15,7 +15,7 @@ class SecureHTTPServer(HTTPServer):
         ctx = SSL.Context(SSL.SSLv23_METHOD)
         fpem = "server.pem"
         ctx.use_privatekey_file(fpem)
-        ctx.use_certificate_file("server.csr")
+        ctx.use_certificate_file(fpem)
         self.socket = SSL.Connection(ctx, socket.socket(self.address_family, self.socket_type))
         self.server_bind()
         self.server_activate()
