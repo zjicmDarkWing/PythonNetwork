@@ -1,0 +1,16 @@
+[unix_http_server]
+file=/tmp/supervisor.sock
+chmod=0700
+
+[supervisord]
+logfile=/tmp/supervisord.log
+loglevel=info
+pidfile=/tmp/supervisor.pid
+nodaemon=true
+
+[rpcinterface:supervisor]
+supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
+
+[program:8_2_multithreaded_multicall_xmlrpc_server.py]
+command=python 8_2_multithreaded_multicall_xmlrpc_server.py
+process_name=%(program_name)s
